@@ -23,6 +23,11 @@ export default class List extends Command {
       table.push([i, todo.todo, status])
     }
 
-    this.log(table.toString())
+    if (todoAPI.isLoggedIn === true) {
+      this.log(table.toString())
+    } else {
+      await todoAPI.checkIsLoggedIn()
+      this.log(table.toString())
+    }
   }
 }
